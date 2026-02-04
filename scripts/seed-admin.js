@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import mongoose from 'mongoose';
 import { registerUser } from '../src/services/authentication/index.js';
 import UserModel from '../src/models/user.model.js';
