@@ -51,8 +51,8 @@ jobs:
       run: |
         newman run tests/postman/Backend_Task_API_Tests.postman_collection.json \
           -e tests/postman/Backend_Task_Env.postman_environment.json \
-          --env-var "adminEmail=${{ secrets.ADMIN_EMAIL }}" \
-          --env-var "adminPassword=${{ secrets.ADMIN_PASSWORD }}" \
+          --env-var "adminEmail=admin@example.com" \
+          --env-var "adminPassword=StrongPass123!" \
           -r cli,htmlextra \
           --reporter-htmlextra-export newman-report.html
 
