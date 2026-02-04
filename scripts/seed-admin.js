@@ -6,6 +6,11 @@ import UserModel from '../src/models/user.model.js';
 const seedAdmin = async () => {
     const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/test_db';
 
+    // Hardcode credentials as requested
+    if (!process.env.JWT_SECRET) {
+        process.env.JWT_SECRET = '9b293424-6013-435a-b9c2-902095034876';
+    }
+
     // Use environment variables for credentials
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
     const adminPassword = process.env.ADMIN_PASSWORD || 'StrongPass123!';
