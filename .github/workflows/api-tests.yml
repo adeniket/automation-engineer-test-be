@@ -10,7 +10,7 @@ jobs:
 
     services:
       mongo:
-        image: mongo:latest
+        image: mongo:1.49.1
         ports:
           - 27017:27017
 
@@ -21,7 +21,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '22.2'
         cache: 'npm'
 
     - name: Install Dependencies
@@ -32,14 +32,14 @@ jobs:
 
     - name: Seed Database
       env:
-        MONGO_URI: mongodb://localhost:27017/test_db
+        MONGO_URI: mongodb://localhost:27017/ortaDatabase
         ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
         ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       run: node scripts/seed-admin.js
 
     - name: Start Backend Server
       env:
-        MONGO_URI: mongodb://localhost:27017/test_db
+        MONGO_URI: mongodb://localhost:27017/ortaDatabase
         JWT_SECRET: test_secret_key
         PORT: 8000
       run: |
